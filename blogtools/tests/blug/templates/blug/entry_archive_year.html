@@ -1,0 +1,26 @@
+{% extends "blug/base.html" %}
+{% load blug_tags %}
+{% load blogtools_tags %}
+
+{% block blog_content %}
+
+<h2>Entries for {{ year }}</h2>
+
+<p>Jump to 
+	{% for month in date_list %}
+	<a href="#{{ month|date:"F"|lower }}">{{ month|date:"F" }}</a>{% if forloop.last %}.{% else %},{% endif %}
+	{% endfor %}
+</p>
+
+{% regroup entry_list|dictsort:"pub_date" by pub_date.month as entries_by_month %}
+
+{% for entry_month in entries_by_month %}
+   <h3><a name="{{ entry_month.grouper|integer_to_month_name|lower }}"></a>{{ entry_month.grouper|integer_to_month_name }} {{ year }}</h3>
+
+   {% for entry in entry_month.list %}
+       {% include "blug/entry_short.html" %}
+   {% endfor %}
+{% endfor %}
+
+
+{% endblock %}

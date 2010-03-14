@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load blug_tags %}
+{% load tagging_tags %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+    <div id="maincontent" class="blog">
+        <div>
+            {% block blog_content %}{% endblock %}
+        </div>
+    </div>
+    
+    <div id="sidebar" class="blog">
+        {% include "blug/sidebar.html" %}
+    </div>
+{% endblock %}

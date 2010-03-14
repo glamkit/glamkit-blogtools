@@ -1,0 +1,12 @@
+{% extends "blug/base.html" %}
+
+{% block blog_content %}
+
+<h2>Entries for {{ month|date:"F Y" }}</h2>
+
+{% for entry in entry_list %}
+   {% include "blug/entry_short.html" %}
+{% endfor %}
+
+
+{% endblock %}

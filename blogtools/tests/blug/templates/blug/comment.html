@@ -1,0 +1,12 @@
+<a name="c{{ comment.id }}"></a>
+<div class="blogcomment {% cycle odd,even %} {% if forloop.first %}first-comment{% endif %}" 
+     id="c{{ comment.id }}">
+    <div class="meta">		
+        <span class="comment_link"><a href="{{ comment.get_content_object_url }}#c{{ comment.id }}">#</a></span>
+        <span class="author">{% if comment.user_url %}<a href="{{ comment.user_url }}" target="_blank">{{ comment.user_name|escape }}</a>{% else %}{{ comment.user_name|escape }}{% endif %}</span>
+        <span class="comment-time">{{ comment.submit_date|date:"d M Y" }}, {{ comment.submit_date|time:"P" }}</span>
+        <div class="clear"></div>
+    </div>
+   	<div class="text">{{ comment.comment|escape|urlizetrunc:40|linebreaks }}</div>
+    
+</div>

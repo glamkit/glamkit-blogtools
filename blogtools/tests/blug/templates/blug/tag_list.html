@@ -1,0 +1,13 @@
+{% extends "blug/base.html" %}
+
+{% block title %}{{ block.super }} - Tags{% endblock %}
+
+{% block blog_content %}
+
+<h2>List of tags</h2>
+
+{% for tag in tag_list %}
+    <p><a href="{% url blug_tag_detail tag.name %}">{{ tag.name }}</a></p>
+{% endfor %}
+
+{% endblock %}
