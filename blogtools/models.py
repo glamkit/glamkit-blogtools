@@ -1,4 +1,4 @@
-djang"""
+"""
 Models for a weblog application.
 
 """
