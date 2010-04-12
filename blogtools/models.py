@@ -1,4 +1,4 @@
-"""
+djang"""
 Models for a weblog application.
 
 """
@@ -8,6 +8,7 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 
 class EntryBase(models.Model):
@@ -15,9 +16,9 @@ class EntryBase(models.Model):
     # Metadata.
     author = models.ForeignKey(User, related_name="%(class)s_authored")
     title = models.CharField(max_length=250)
-    pub_date = models.DateTimeField(u'Date posted', default=datetime.datetime.today)
+    pub_date = models.DateTimeField(_('Date posted'), default=datetime.datetime.today)
     slug = models.SlugField(unique_for_date='pub_date',
-                            help_text=u'Used in the URL of the entry. Must be unique for the publication date of the entry.')
+                            help_text=_('Used in the URL of the entry. Must be unique for the publication date of the entry.'))
     enable_comments = models.BooleanField(default=True)
     
     # The actual entry bits.
@@ -74,7 +75,7 @@ class StatusableEntryMixin(models.Model):
         )
 
     status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT_STATUS,
-                                 help_text=u'Only entries with "live" status will be displayed publicly.')
+                                 help_text=_('Only entries with "live" status will be displayed publicly.'))
 
     class Meta:
         abstract = True
