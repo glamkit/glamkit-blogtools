@@ -2,7 +2,7 @@
 Glamkit-blogtools
 =================
 
-A tool for quickly creating customised blog apps. It is part of the `GLAMkit project <http://glamkit.org/>`_.
+A tool for quickly creating customised blog apps. It is part of the `GLAMkit project <http://glamkit.org/>`_. For more information, see the `documentation <http://docs.glamkit.org/blogtools/>`_.
 
 View a full list of `GLAMkit components <http://docs.glamkit.org/components/>`_.
 
