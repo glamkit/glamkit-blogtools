@@ -2,6 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='glamkit-blogtools',
+    author='Julien Phalip',
+    author_email='julien@interaction.net.au',
     version='0.0.1',
     description='Mini framework for making Django blog apps.',
     url='http://github.com/glamkit/glamkit-blogtools',
