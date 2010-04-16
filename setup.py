@@ -4,8 +4,9 @@ setup(
     name='glamkit-blogtools',
     author='Julien Phalip',
     author_email='julien@interaction.net.au',
-    version='0.0.1',
+    version='0.5.0',
     description='Mini framework for making Django blog apps.',
+    long_description=open('README.rst').read(),
     url='http://github.com/glamkit/glamkit-blogtools',
     packages=find_packages(),
     package_data={
