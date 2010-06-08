@@ -8,9 +8,10 @@ class EntryFeedBase(Feed):
     blog_name = None
     entry_queryset = None
     url_name_root = None
+    publication_date_field = 'pub_date'
 
     def item_pubdate(self, item):
-        return item.pub_date
+        return getattr(item, self.publication_date_field)
 
 class Entries(EntryFeedBase):
 

@@ -16,7 +16,8 @@ from utils import get_query
 
 class BaseEntryViews(object):
     entry_queryset = None
-    template_root_path = None        
+    template_root_path = None
+    publication_date_field = 'pub_date'
 
     def archive_index(self, request, entry_queryset=None, *args, **kwargs):
         if entry_queryset is not None:
@@ -37,7 +38,7 @@ class BaseEntryViews(object):
             queryset = self.entry_queryset
         info_dict = {
                 'queryset': queryset,
-                'date_field': 'pub_date',
+                'date_field': self.publication_date_field,
                 'template_name': '%s/entry_archive_year.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
@@ -50,7 +51,7 @@ class BaseEntryViews(object):
             queryset = self.entry_queryset
         info_dict = {
                 'queryset': queryset,
-                'date_field': 'pub_date',
+                'date_field': self.publication_date_field,
                 'template_name': '%s/entry_archive_month.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
@@ -63,7 +64,7 @@ class BaseEntryViews(object):
             queryset = self.entry_queryset
         info_dict = {
                 'queryset': queryset,
-                'date_field': 'pub_date',
+                'date_field': self.publication_date_field,
                 'template_name': '%s/entry_archive_day.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
@@ -76,7 +77,7 @@ class BaseEntryViews(object):
             queryset = self.entry_queryset
         info_dict = {
                 'queryset': queryset,
-                'date_field': 'pub_date',
+                'date_field': self.publication_date_field,
                 'template_name': '%s/entry_detail.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }

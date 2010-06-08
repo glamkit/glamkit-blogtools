@@ -31,6 +31,7 @@ def integer_to_month_name(value):
 
 
 class EntryTemplateTagsBase(object):
+    publication_date_field = 'pub_date'
     entry_queryset = None
     template_root_path = None
     #TODO: template_tag_name_prefix
@@ -54,7 +55,7 @@ class EntryTemplateTagsBase(object):
                     queryset = self.queryset.resolve(context)
                 else:
                     queryset = this.entry_queryset
-                return { self.varname: queryset.dates('pub_date', 'month', order='DESC') }
+                return { self.varname: queryset.dates(this.publication_date_field, 'month', order='DESC') }
         
         def get_archive_month_list(parser, token):
             """
@@ -108,9 +109,9 @@ class EntryTemplateTagsBase(object):
                 else:
                     queryset = this.entry_queryset
                 if self.num == 1:
-                    result = queryset.order_by("-pub_date")[0]
+                    result = queryset.order_by("-" + this.publication_date_field)[0]
                 else:
-                    result = list(queryset.order_by("-pub_date")[:self.num])
+                    result = list(queryset.order_by("-" + this.publication_date_field)[:self.num])
                 return { self.varname: result }
         
                 
