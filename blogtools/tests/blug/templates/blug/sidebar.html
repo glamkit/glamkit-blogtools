@@ -22,6 +22,6 @@
 <ul>
     {% get_archive_month_list as month_list %}
     {% for month in month_list %}
-        <li><a href="{% url blug_entry_archive_month month|date:"Y",month|date:"m" %}">{{ month|date:"F Y" }}</a></li>
+        <li><a href="{% url blug_entry_archive_month month|date:"Y" month|date:"m" %}">{{ month|date:"F Y" }}</a></li>
     {% endfor %}
 </ul>
