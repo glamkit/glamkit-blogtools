@@ -65,7 +65,9 @@ class TagUrlPatternsMixin(object):
     
     def get_tag_urlpatterns(self):
         return patterns('',
-           url(r'^%s/tag_list/$' % self.admin_prefix, self.views.json_tag_list),
+           url(r'^%s/tag_list/$' % self.admin_prefix,
+		       self.views.json_tag_list,
+		       name='%s_json_tag_list' % self.url_name_root),
         
            url(r'^tags/$',
                self.views.tag_list,
