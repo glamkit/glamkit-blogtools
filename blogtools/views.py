@@ -18,6 +18,7 @@ class BaseEntryViews(object):
     entry_queryset = None
     template_root_path = None
     publication_date_field = 'pub_date'
+    slug_field = 'slug'
 
 
     def archive_index(self, request, *args, **kwargs):
@@ -87,7 +88,7 @@ class BaseEntryViews(object):
                 'template_name': '%s/entry_detail.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
-        return date_based.object_detail(request, *args, **dict(info_dict, month_format='%m', slug_field='slug', **kwargs))
+        return date_based.object_detail(request, *args, **dict(info_dict, month_format='%m', slug_field=self.slug_field, **kwargs))
 
     def search(self, request, *args, **kwargs):
         if 'entry_queryset' in kwargs:
