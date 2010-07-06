@@ -20,6 +20,7 @@ class BaseEntryViews(object):
     publication_date_field = 'pub_date'
     slug_field = 'slug'
     paginate_by = None
+    month_format = '%m'
 
     def archive_index(self, request, *args, **kwargs):
         if 'entry_queryset' in kwargs:
@@ -63,7 +64,7 @@ class BaseEntryViews(object):
                 'template_name': '%s/entry_archive_month.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
-        return date_based.archive_month(request, *args, **dict(info_dict, month_format='%m', **kwargs))
+        return date_based.archive_month(request, *args, **dict(info_dict, month_format=self.month_format, **kwargs))
 
     def archive_day(self, request, *args, **kwargs):
         #TODO: Enable pagination when Django's ticket #2367 is fixed.
@@ -78,7 +79,7 @@ class BaseEntryViews(object):
                 'template_name': '%s/entry_archive_day.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
-        return date_based.archive_day(request, *args, **dict(info_dict, month_format='%m', **kwargs))
+        return date_based.archive_day(request, *args, **dict(info_dict, month_format=self.month_format, **kwargs))
 
     def entry_detail(self, request, *args, **kwargs):
         if 'entry_queryset' in kwargs:
@@ -92,7 +93,7 @@ class BaseEntryViews(object):
                 'template_name': '%s/entry_detail.html' % self.template_root_path,
                 'template_object_name': 'entry',
             }
-        return date_based.object_detail(request, *args, **dict(info_dict, month_format='%m', slug_field=self.slug_field, **kwargs))
+        return date_based.object_detail(request, *args, **dict(info_dict, month_format=self.month_format, slug_field=self.slug_field, **kwargs))
 
     def search(self, request, *args, **kwargs):
         #TODO: enable pagination
