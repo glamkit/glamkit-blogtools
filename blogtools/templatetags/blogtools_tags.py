@@ -1,7 +1,6 @@
 from django import template
-
 from template_utils.templatetags.generic_content import GenericContentNode, ContextUpdatingNode
-
+from datetime import datetime
 
 register = template.Library()
 
@@ -241,5 +240,37 @@ class EntryTemplateTagsBase(object):
                     raise template.TemplateSyntaxError("second argument to '%s' tag must be 'as'" % bits[0])
                 return FeaturedNode(None, bits[1], bits[3])
         get_featured_entries = given_register.tag(get_featured_entries)
-    
-    
+        
+        
+        
+        
+        class FutureEntries(ContextUpdatingNode):
+            def __init__(self, num, varname):
+                self.num = num
+                self.varname = varname
+            
+            def get_content(self, context):
+                result = this.entry_queryset.filter(status=1,pub_date__gt=datetime.now()).order_by("pub_date")[:self.num]
+                return { self.varname: result }
+            
+        def get_future_entries(parser, token):
+            """
+            Retrieves the next ``num`` future entries and stores them in a specified context variable.
+            This returns entries with a publication date in the future, but have been made "live" already.
+            eg: to be used to show users blog posts they can look forward to!
+            
+            Syntax::
+                {% get_future_entries [num] as [varname] %}
+            
+            Example::
+                {% get_future_entries 5 as future_entries %}
+            
+            """
+            bits = token.contents.split()
+            if len(bits) == 4:
+                if bits[2] != 'as':
+                    raise template.TemplateSyntaxError("second argument to '%s' tag must be 'as'" % bits[0])
+                return FutureEntries(bits[1], bits[3])
+            
+            raise template.TemplateSyntaxError("'%s' tag takes four arguments 'get_future_entries [num] as [varname]'" % bits[0])
+        get_latest_entries = given_register.tag(get_future_entries)
