@@ -164,7 +164,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'GLAMkitSmartlinksdoc'
+htmlhelp_basename = 'GLAMkitBlogtoolsdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -178,7 +178,7 @@ htmlhelp_basename = 'GLAMkitSmartlinksdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'GLAMkitSmartlinks.tex', u'GLAMkit Smartlinks Documentation',
+  ('index', 'GLAMkitBlogtools.tex', u'GLAMkit Blogtools Documentation',
    u'The GLAMkit Association', 'manual'),
 ]
 
@@ -211,6 +211,6 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'glamkitsmartlinks', u'GLAMkit Smartlinks Documentation',
+    ('index', 'glamkitblogtools', u'GLAMkit Blogtools Documentation',
      [u'The GLAMkit Association'], 1)
 ]
