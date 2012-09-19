@@ -1,19 +1,6 @@
-=================
-Glamkit-blogtools
-=================
+This repository has a new location
+----------------------------------
 
-A tool for quickly creating customised blog apps. It is part of the `GLAMkit project <http://glamkit.org/>`_. For more information, see the `documentation <http://docs.glamkit.org/documentation/blogtools/>`_.
+``github.com/glamkit`` repositories have been deprecated in favour of the ixc forks. This repository is now at https://github.com/ixc/glamkit-blogtools.
 
-Dependencies:
-=============
-
-* django apps:
-    - django.contrib.admin
-    - django-template-utils
-    - django-tagging (optional)
-    - typogrify (optional)
-    
-* python libraries:
-    - BeautifulSoup (optional)
-    - markdown (optional)
-    
+Please update your pip requirements etc. to use the new fork.
